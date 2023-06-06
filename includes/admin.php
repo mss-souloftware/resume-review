@@ -2,7 +2,7 @@
 // Render the admin settings page
 function resume_review_render_admin_page()
 {
-    ?>
+?>
     <div class="wrap">
         <h1>Resume Review Settings</h1>
         <form method="post" action="options.php">
@@ -13,7 +13,7 @@ function resume_review_render_admin_page()
             ?>
         </form>
     </div>
-    <?php
+<?php
 }
 
 // Register admin settings and fields
@@ -34,6 +34,8 @@ function resume_review_register_settings()
 
     add_settings_field('resume_review_redirect_page', 'Redirect Page (Optional)', 'resume_review_redirect_page_callback', 'resume_review_settings', 'resume_review_general_section');
     register_setting('resume_review_settings', 'resume_review_redirect_page');
+
+    add_settings_field('resume_review_copy_to_clipboard', 'Shortcode', 'resume_review_copy_to_clipboard_callback', 'resume_review_settings', 'resume_review_general_section');
 }
 
 // Callback function for 'Allowed File Types' field
@@ -54,25 +56,25 @@ function resume_review_allowed_filetypes_callback()
 function resume_review_mailto_callback()
 {
     $mailto = get_option('resume_review_mailto');
-    ?>
+?>
     <input type="email" name="resume_review_mailto" value="<?php echo esc_attr($mailto); ?>" required>
-    <?php
+<?php
 }
 
 // Callback function for 'Email Sender' field
 function resume_review_mailfrom_callback()
 {
     $mailfrom = get_option('resume_review_mailfrom');
-    ?>
+?>
     <input type="email" name="resume_review_mailfrom" value="<?php echo esc_attr($mailfrom); ?>" required>
-    <?php
+<?php
 }
 
 // Callback function for 'Redirect Page' field
 function resume_review_redirect_page_callback()
 {
     $redirect_page = get_option('resume_review_redirect_page');
-    ?>
+?>
     <select name="resume_review_redirect_page">
         <option value="">None</option>
         <?php
@@ -83,23 +85,32 @@ function resume_review_redirect_page_callback()
         }
         ?>
     </select>
-    <?php
+<?php
 }
 
+// Callback function for 'Copy to Clipboard' field
+function resume_review_copy_to_clipboard_callback()
+{
+?>
+    <div>
+        <input type="text" value="[resume_review_form]" readonly>
+    </div>
+<?php
+}
 
 // Add the admin settings page
 function resume_review_add_admin_page()
 {
     add_menu_page(
-        'Resume Review Setting', 
-        'Resume Review', 
+        'Resume Review Setting',
+        'Resume Review',
         'manage_options',
-        'resume-review-settings', 
-        'resume_review_render_admin_page', 
-        'dashicons-media-default', 
-        10 
+        'resume-review-settings',
+        'resume_review_render_admin_page',
+        'dashicons-media-default',
+        10
     );
 
-    resume_review_register_settings(); 
+    resume_review_register_settings();
 }
 add_action('admin_menu', 'resume_review_add_admin_page');
