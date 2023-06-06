@@ -8,6 +8,11 @@ Author: 9to5 Web
 Author URI: https://9to5web.com.au/
 */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    die; // Exit if accessed directly
+}
+
+
 // Plugin activation and deactivation hooks
 register_activation_hook(__FILE__, 'resume_review_activate');
 register_deactivation_hook(__FILE__, 'resume_review_deactivate');

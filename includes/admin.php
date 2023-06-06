@@ -1,4 +1,9 @@
 <?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+    die; // Exit if accessed directly
+}
+
 // Render the admin settings page
 function resume_review_render_admin_page()
 {

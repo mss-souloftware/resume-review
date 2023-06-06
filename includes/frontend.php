@@ -1,4 +1,9 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    die; // Exit if accessed directly
+}
+
+
 // Enqueue frontend scripts and styles
 function resume_review_enqueue_scripts()
 {
