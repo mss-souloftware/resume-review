@@ -3,8 +3,10 @@
 function resume_review_enqueue_scripts()
 {
     wp_enqueue_script('resume-review-frontend', plugin_dir_url(__FILE__) . '/js/frontend.js', array('jquery'), '1.0', true);
+    wp_enqueue_style('resume-review-style', plugin_dir_url(__FILE__) . '/css/style.css', array(), '1.0');
 }
 add_action('wp_enqueue_scripts', 'resume_review_enqueue_scripts');
+
 
 // Render the frontend form
 function resume_review_render_form()

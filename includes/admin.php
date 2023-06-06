@@ -19,6 +19,8 @@ function resume_review_render_admin_page()
 // Register admin settings and fields
 function resume_review_register_settings()
 {
+    register_setting('resume_review_settings', 'resume_review_settings');
+
     add_settings_section('resume_review_general_section', 'General Settings', '', 'resume_review_settings');
 
     add_settings_field('resume_review_allowed_filetypes', 'Allowed File Types', 'resume_review_allowed_filetypes_callback', 'resume_review_settings', 'resume_review_general_section');
@@ -89,13 +91,15 @@ function resume_review_redirect_page_callback()
 function resume_review_add_admin_page()
 {
     add_menu_page(
-        'Resume Review Settings', // Page title
-        'Resume Review', // Menu title
-        'manage_options', // Capability required to access the page
-        'resume-review-settings', // Menu slug
-        'resume_review_render_admin_page', // Callback function to render the page
-        'dashicons-media-default', // Menu icon (you can change it to a different dashicon class)
-        25 // Menu position
+        'Resume Review Setting', 
+        'Resume Review', 
+        'manage_options',
+        'resume-review-settings', 
+        'resume_review_render_admin_page', 
+        'dashicons-media-default', 
+        10 
     );
+
+    resume_review_register_settings(); 
 }
 add_action('admin_menu', 'resume_review_add_admin_page');
