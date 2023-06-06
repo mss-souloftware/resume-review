@@ -13,12 +13,33 @@ function resume_review_render_form()
 {
     ob_start();
 ?>
-    <form id="resume-review-form" method="post" enctype="multipart/form-data">
-        <input type="file" name="resume" required accept="<?php echo implode(',', get_option('resume_review_allowed_filetypes', array('.pdf', '.doc', '.docx'))); ?>">
-        <input type="email" name="email" placeholder="Your Email" required>
-        <input type="submit" value="Submit">
-    </form>
-    <div id="resume-review-message" style="display: none;"></div>
+    <div id="resume-review-container">
+        <form id="resume-review-form" method="post" enctype="multipart/form-data">
+            <div class="fileUpload">
+                <div class="uploadButton">
+                    <img src="<?php echo plugin_dir_url(__FILE__) . '/images/upload-button.svg'; ?>" alt="">
+                </div>
+                <input type="file" name="resume" id="resume" required accept="<?php echo implode(',', get_option('resume_review_allowed_filetypes', array('.pdf', '.doc', '.docx'))); ?>">
+                <label class="fileUploadLabel" for="resume">Get a free resume review</label>
+            </div>
+            <div class="mailPopUp" style="display: none;">
+                <span class="topInfo">NEXT STEPS</span>
+                <div class="lineDivider"></div>
+                <h3 class="title">Where shall we send your critique?</h3>
+                <p class="description">We’ll get you a detailed analysis of your resume within 48 hours. Now, we just need to know where to send it!</p>
+                <label for="email">Email Address</label>
+                <div class="mailFLex">
+                    <input type="email" name="email" placeholder="email@website.com" required>
+                    <input type="submit" value="Get my critique">
+                </div>
+                <div class="footerText">
+                    <p> By uploading my resume, I agree to the TopResume <a href="#">Terms of Use</a> and acknowledge I have read the <a href="#">Privacy Policy.</a></p>
+                </div>
+            </div>
+        </form>
+        <div id="resume-review-message" style="display: none;"></div>
+        <div id="bgLightbox" style="display: none;"></div>
+    </div>
     <?php
     $max_upload_size = wp_max_upload_size() / 1024 / 1024; // Convert bytes to MB
     $allowed_types = implode(', ', get_allowed_mime_types());

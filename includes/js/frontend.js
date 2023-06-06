@@ -32,8 +32,12 @@ jQuery(document).ready(function($) {
     if (allowedFileTypes.indexOf(fileExtension) === -1) {
       $("#resume-review-message").text("This file type is not allowed.");
       $("#resume-review-message").show();
+      $("#resume-review-container .mailPopUp").hide();
+      $("#resume-review-container #bgLightbox").hide();
     } else {
       $("#resume-review-message").hide();
+      $("#resume-review-container .mailPopUp").show();
+      $("#resume-review-container #bgLightbox").show();
     }
   });
 });

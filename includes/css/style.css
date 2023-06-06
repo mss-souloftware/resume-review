@@ -1,0 +1,205 @@
+#resume-review-container {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#resume-review-form {
+    background: rgba(9, 20, 59, .6);
+    border: 2px dashed rgba(255, 255, 255, .6);
+    color: #fff;
+    padding: 50px;
+}
+
+#resume-review-form .uploadButton {
+    height: 12.4rem;
+    width: 12.4rem;
+    -webkit-box-shadow: inset 0 0 0 1rem #fff;
+    box-shadow: inset 0 0 0 1rem #fff;
+    margin: 0 auto;
+    margin-bottom: 2.5rem;
+    border-radius: 300px;
+}
+
+#resume-review-form .fileUpload {
+    text-align: center;
+}
+
+#resume-review-form input[type="file"] {
+    display: none;
+}
+
+#resume-review-form .fileUploadLabel {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #047AAC;
+    color: #333;
+    border: 1px solid #047AAC;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 3px;
+    margin: 0 auto;
+    text-align: center;
+    transition: all 0.3s linear;
+}
+
+#resume-review-form .fileUploadLabel:hover {
+    background-color: #ffff;
+    color: #000;
+    border: 1px solid #047AAC;
+}
+
+#resume-review-form .fileUploadLabel:focus {
+    outline: 2px solid #999;
+}
+
+#resume-review-container #resume-review-message {
+    position: absolute;
+    display: inline-flex;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #EC1F27;
+    border: 1px solid rgba(255, 0, 87, 0.2);
+    color: #fff;
+    top: 20px;
+    padding: 10px;
+    width: 90%;
+}
+
+#resume-review-container .mailPopUp {
+    position: fixed;
+    z-index: 999999;
+    max-width: 600px;
+    max-height: 400px;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+#resume-review-container .mailPopUp * {
+    color: #000;
+}
+
+#resume-review-container .mailPopUp .topInfo {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#resume-review-container .mailPopUp .lineDivider {
+    border-top: 1px solid #E5E9F1;
+    margin: 20px 0;
+}
+
+
+#resume-review-container .mailPopUp label {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#resume-review-container .mailPopUp .footerText {
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+#resume-review-container .mailPopUp .mailFLex input[type="email"] {
+    color: #202124;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid #d2d9e7;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-box-shadow: inset 0 5px 11px -7px rgba(32, 33, 36, .2);
+    box-shadow: inset 0 5px 11px -7px rgba(32, 33, 36, .2);
+    border-radius: 3px;
+    width: 60%;
+}
+
+#resume-review-container .mailPopUp .mailFLex input[type=submit] {
+    background-color: #047AAC;
+    border: 1px solid transparent;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    -webkit-transition: all .2s cubic-bezier(0.36, 1.26, 0.275, 0.97);
+    -o-transition: all .2s cubic-bezier(0.36, 1.26, 0.275, 0.97);
+    transition: all .2s cubic-bezier(0.36, 1.26, 0.275, 0.97);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-left: -5px;
+    border-radius: 0 3px 3px 0;
+}
+
+#resume-review-container .mailPopUp .mailFLex input[type="email"]:focus,
+#resume-review-container .mailPopUp .mailFLex input[type="email"]:focus-visible {
+    border: 1px solid #047AAC !important;
+    outline: none !important;
+}
+
+
+#resume-review-container #bgLightbox {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #00000080;
+    left: 0;
+    top: 0;
+}
+
+@media(max-width:600px) {
+
+    #resume-review-form {
+        padding: 30px 15px;
+    }
+
+    #resume-review-form .uploadButton {
+        height: 150px;
+        width: 150px;
+        box-shadow: inset 0 0 0 8px #fff;
+    }
+
+    #resume-review-form .fileUploadLabel {
+        width: 100%;
+    }
+
+
+    #resume-review-container .mailPopUp {
+        padding: 30px 15px;
+    }
+
+    #resume-review-container .mailPopUp .title {
+        font-size: 22px;
+    }
+
+    #resume-review-container .mailPopUp .description {
+        font-size: 14px;
+    }
+
+
+    #resume-review-container .mailPopUp .mailFLex input[type="email"] {
+        width: 100%;
+    }
+
+    #resume-review-container .mailPopUp .mailFLex input[type=submit] {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+        border-radius: 3px;
+    }
+}
