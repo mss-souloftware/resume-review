@@ -113,7 +113,7 @@ function resume_review_add_admin_page()
         'resume-review-settings',
         'resume_review_render_admin_page',
         'dashicons-media-default',
-        10
+        20
     );
 
     resume_review_register_settings();
