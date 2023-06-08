@@ -21,6 +21,15 @@
     border-radius: 300px;
 }
 
+#resume-review-form .uploadButton img {
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+#resume-review-form .uploadButton:hover>img {
+    transform: scale(1.2);
+}
+
 #resume-review-form .fileUpload {
     text-align: center;
 }

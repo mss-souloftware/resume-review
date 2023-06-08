@@ -1,5 +1,5 @@
-jQuery(document).ready(function($) {
-  $("#resume-review-form").submit(function(e) {
+jQuery(document).ready(function ($) {
+  $("#resume-review-form").submit(function (e) {
     e.preventDefault(); // Prevent the form from submitting
 
     var allowedFileTypes = ["pdf", "doc", "docx"]; // Add your allowed file types here
@@ -25,7 +25,7 @@ jQuery(document).ready(function($) {
   });
 
   // Show the error message instantly when a file is selected
-  $("#resume-review-form input[name='resume']").on("change", function() {
+  $("#resume-review-form input[name='resume']").on("change", function () {
     var fileName = $(this).val();
     var fileExtension = fileName.split(".").pop().toLowerCase();
 
@@ -40,4 +40,9 @@ jQuery(document).ready(function($) {
       $("#resume-review-container #bgLightbox").show();
     }
   });
+
+  $("#resume-review-form .uploadButton").on("click", function () {
+    $("#resume-review-form input[name='resume']").click();
+  });
+  
 });
