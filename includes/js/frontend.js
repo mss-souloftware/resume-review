@@ -41,8 +41,10 @@ jQuery(document).ready(function ($) {
     }
   });
 
+  // File Icon work as file upload input/button 
+  
   $("#resume-review-form .uploadButton").on("click", function () {
     $("#resume-review-form input[name='resume']").click();
   });
-  
+
 });
