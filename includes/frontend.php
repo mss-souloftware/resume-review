@@ -91,22 +91,36 @@ function resume_review_handle_form_submission()
             if (move_uploaded_file($resume_file['tmp_name'], $target_file)) {
                 // File upload successful, proceed with further actions
 
-                // Send email notification with attachment
+                // Send email notification with attachment to admin
                 $mailto = get_option('resume_review_mailto');
                 $mailfrom = get_option('resume_review_mailfrom');
 
-                $subject = 'New Resume Submission';
-                $message = "Email: $email\n\n";
-                $message .= "Please find the attached resume.";
+                $admin_subject = 'New Resume Submission';
+                $admin_message = "Email: $email\n\n";
+                $admin_message .= "Please find the attached resume.";
 
-                $attachments = array($target_file);
+                $admin_attachments = array($target_file);
 
-                $headers = array(
+                $admin_headers = array(
                     'From: ' . $mailfrom,
                     'Content-Type: text/html; charset=UTF-8'
                 );
 
-                wp_mail($mailto, $subject, $message, $headers, $attachments);
+                $admin_email_sent = wp_mail($mailto, $admin_subject, $admin_message, $admin_headers, $admin_attachments);
+
+                // Send thank you email to the user
+                $user_subject = 'Thank You for Your Resume Submission';
+                $user_message = "Dear User,\n\n";
+                $user_message .= "Thank you for submitting your resume. We will review it and get back to you within 48 hours.\n\n";
+                $user_message .= "Regards,\n";
+                $user_message .= "Optimus Resumes";
+
+                $user_headers = array(
+                    'From: ' . $mailfrom,
+                    'Content-Type: text/html; charset=UTF-8'
+                );
+
+                $user_email_sent = wp_mail($email, $user_subject, $user_message, $user_headers);
 
                 // Display success message or perform redirection
                 $redirect_page = get_option('resume_review_redirect_page');
@@ -114,7 +128,11 @@ function resume_review_handle_form_submission()
                     wp_redirect(get_permalink($redirect_page));
                     exit;
                 } else {
-                    echo '<p>Resume uploaded successfully.</p>';
+                    if ($admin_email_sent && $user_email_sent) {
+                        echo '<p>Resume uploaded successfully.</p>';
+                    } else {
+                        echo '<p>Error occurred while sending email notifications.</p>';
+                    }
                 }
             } else {
                 echo '<p>Error occurred while uploading the file.</p>';
